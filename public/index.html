@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClashOfCocktail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Bienvenue sur ClashOfCocktail</h1>
+    <button onclick="getCocktail()">Découvrir un Cocktail</button>
+    <div id="cocktail-info"></div>
+
+    <script>
+        async function getCocktail() {
+            const response = await fetch("/api/cocktail");
+            const data = await response.json();
+            document.getElementById("cocktail-info").innerHTML = `
+                <h2>${data.name}</h2>
+                <p><strong>Ingrédients:</strong> ${data.ingredients.join(", ")}</p>
+                <p>${data.description}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
