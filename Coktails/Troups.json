@@ -1,0 +1,191 @@
+{
+  "troupes": [
+    {
+      "nom": "Barbare",
+      "cocktail": "Furie Rouge",
+      "ingredients": [
+        "4 cl de rhum épicé",
+        "2 cl de liqueur de fraise",
+        "8 cl de jus de cranberry",
+        "1 trait de sirop de grenadine",
+        "Glaçons"
+      ],
+      "verre": "Old-fashioned",
+      "garniture": "Cerise"
+    },
+    {
+      "nom": "Archer",
+      "cocktail": "Flèche Rosée",
+      "ingredients": [
+        "4 cl de vodka",
+        "2 cl de liqueur de framboise",
+        "6 cl de limonade",
+        "1 trait de jus de citron vert",
+        "Glaçons"
+      ],
+      "verre": "Martini",
+      "garniture": "Framboise"
+    },
+    {
+      "nom": "Géant",
+      "cocktail": "Big Punch",
+      "ingredients": [
+        "5 cl de whisky",
+        "2 cl de liqueur de miel",
+        "6 cl de jus d’orange",
+        "1 trait d’Angostura bitters",
+        "Glaçons"
+      ],
+      "verre": "Grand verre",
+      "garniture": "Rondelle d’orange"
+    },
+    {
+      "nom": "Gobelin",
+      "cocktail": "Or Liquide",
+      "ingredients": [
+        "4 cl de rhum ambré",
+        "2 cl de liqueur de banane",
+        "6 cl de jus d’ananas",
+        "1 trait de sirop de vanille",
+        "Glaçons"
+      ],
+      "verre": "Tiki mug",
+      "garniture": "Tranche d’ananas et feuille de menthe"
+    },
+    {
+      "nom": "Sapeur",
+      "cocktail": "Explosion Acide",
+      "ingredients": [
+        "4 cl de tequila",
+        "2 cl de triple sec",
+        "6 cl de jus de citron vert",
+        "1 trait de sirop d’agave"
+      ],
+      "verre": "Margarita",
+      "garniture": "Zeste de citron vert"
+    },
+    {
+      "nom": "Ballon",
+      "cocktail": "Bombe Noire",
+      "ingredients": [
+        "5 cl de rhum brun",
+        "2 cl de liqueur de café",
+        "6 cl de cola"
+      ],
+      "verre": "Old-fashioned",
+      "garniture": "Cerise noire"
+    },
+    {
+      "nom": "Sorcier",
+      "cocktail": "Flamme Mystique",
+      "ingredients": [
+        "4 cl de gin",
+        "2 cl de curaçao bleu",
+        "6 cl de tonic"
+      ],
+      "verre": "Verre à martini",
+      "garniture": "Rondelle de citron"
+    },
+    {
+      "nom": "Guérisseuse",
+      "cocktail": "Élixir Divin",
+      "ingredients": [
+        "4 cl de liqueur de sureau",
+        "2 cl de gin",
+        "6 cl de prosecco"
+      ],
+      "verre": "Flûte",
+      "garniture": "Fleur comestible"
+    },
+    {
+      "nom": "Dragon",
+      "cocktail": "Souffle de Feu",
+      "ingredients": [
+        "5 cl de rhum épicé",
+        "2 cl de liqueur de piment",
+        "6 cl de jus de mangue"
+      ],
+      "verre": "Tiki mug",
+      "garniture": "Piment rouge"
+    },
+    {
+      "nom": "P.E.K.K.A",
+      "cocktail": "Armure Liquide",
+      "ingredients": [
+        "5 cl de vodka noire",
+        "2 cl de liqueur de réglisse",
+        "6 cl de soda au cola"
+      ],
+      "verre": "Verre highball",
+      "garniture": "Bâton de réglisse"
+    },
+    {
+      "nom": "Bébé Dragon",
+      "cocktail": "Mini-Souffle",
+      "ingredients": [
+        "4 cl de rhum blanc",
+        "2 cl de liqueur de pastèque",
+        "6 cl de jus d’orange",
+        "1 trait de sirop de grenadine"
+      ],
+      "verre": "Highball",
+      "garniture": "Rondelle d’orange"
+    },
+    {
+      "nom": "Mineur",
+      "cocktail": "Creuse-Trou",
+      "ingredients": [
+        "5 cl de bourbon",
+        "2 cl de sirop d’érable",
+        "6 cl de jus de pomme",
+        "1 trait d’Angostura bitters"
+      ],
+      "verre": "Old-fashioned",
+      "garniture": "Zeste d’orange"
+    },
+    {
+      "nom": "Électro-Dragon",
+      "cocktail": "Foudre Bleue",
+      "ingredients": [
+        "4 cl de vodka",
+        "2 cl de curaçao bleu",
+        "6 cl de Red Bull"
+      ],
+      "verre": "Highball",
+      "garniture": "Tranche de citron"
+    },
+    {
+      "nom": "Yéti",
+      "cocktail": "Blizzard",
+      "ingredients": [
+        "4 cl de gin",
+        "2 cl de liqueur de coco",
+        "6 cl de lait de coco"
+      ],
+      "verre": "Tiki mug",
+      "garniture": "Noix de coco râpée"
+    },
+    {
+      "nom": "Chevaucher de dragon",
+      "cocktail": "Cavalier en Feu",
+      "ingredients": [
+        "5 cl de rhum brun",
+        "2 cl de liqueur de cannelle",
+        "6 cl de jus de fruit de la passion"
+      ],
+      "verre": "Hurricane",
+      "garniture": "Bâton de cannelle"
+    },
+    {
+      "nom": "Electro-Titanide",
+      "cocktail": "Éclair Divin",
+      "ingredients": [
+        "4 cl de tequila",
+        "2 cl de curaçao bleu",
+        "6 cl de jus de citron"
+      ],
+      "verre": "Verre old-fashioned",
+      "garniture": "Écorce de citron"
+    }
+  ]
+}

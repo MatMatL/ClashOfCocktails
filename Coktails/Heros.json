@@ -1,0 +1,48 @@
+{
+  "heros": [
+    {
+      "nom": "Roi des Barbares",
+      "cocktail": "Fureur Royale",
+      "ingredients": [
+        "5 cl de bourbon",
+        "2 cl de liqueur de cannelle",
+        "6 cl de jus de pomme"
+      ],
+      "verre": "Old-fashioned",
+      "garniture": "Bâton de cannelle"
+    },
+    {
+      "nom": "Reine des Archers",
+      "cocktail": "Tir Fatal",
+      "ingredients": [
+        "4 cl de vodka",
+        "2 cl de liqueur de framboise",
+        "6 cl de champagne"
+      ],
+      "verre": "Flûte",
+      "garniture": "Framboise"
+    },
+    {
+      "nom": "Grand Gardien",
+      "cocktail": "Éther Mystique",
+      "ingredients": [
+        "4 cl de gin",
+        "2 cl de sirop de violette",
+        "6 cl d’eau gazeuse"
+      ],
+      "verre": "Verre à vin",
+      "garniture": "Brin de lavande"
+    },
+    {
+      "nom": "Championne Royale",
+      "cocktail": "Lance Divine",
+      "ingredients": [
+        "5 cl de rhum ambré",
+        "2 cl de liqueur de vanille",
+        "6 cl de jus d’ananas"
+      ],
+      "verre": "Hurricane",
+      "garniture": "Tranche d’ananas"
+    }
+  ]
+}

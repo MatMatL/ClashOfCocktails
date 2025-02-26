@@ -1,0 +1,138 @@
+{
+  "troupes_noires": [
+    {
+      "nom": "Gargouille",
+      "cocktail": "Essence Sombre",
+      "ingredients": [
+        "4 cl de gin",
+        "2 cl de crème de cassis",
+        "6 cl de tonic"
+      ],
+      "verre": "Highball",
+      "garniture": "Mûre"
+    },
+    {
+      "nom": "Chevaucheur de Cochon",
+      "cocktail": "Porc Sauvage",
+      "ingredients": [
+        "5 cl de whisky",
+        "2 cl de sirop d’érable",
+        "6 cl de ginger beer"
+      ],
+      "verre": "Old-fashioned",
+      "garniture": "Rondelle de citron vert"
+    },
+    {
+      "nom": "Valkyrie",
+      "cocktail": "Tornade Rouge",
+      "ingredients": [
+        "4 cl de rhum épicé",
+        "2 cl de liqueur de cerise",
+        "6 cl de jus de cranberry"
+      ],
+      "verre": "Hurricane",
+      "garniture": "Cerise flambée"
+    },
+    {
+      "nom": "Golem",
+      "cocktail": "Roche Liquide",
+      "ingredients": [
+        "5 cl de rhum brun",
+        "2 cl de liqueur de café",
+        "6 cl de soda au cola"
+      ],
+      "verre": "Old-fashioned",
+      "garniture": "Zeste d’orange"
+    },
+    {
+      "nom": "Golem de Glace",
+      "cocktail": "Blizzard",
+      "ingredients": [
+        "4 cl de vodka",
+        "2 cl de liqueur de menthe",
+        "6 cl de lait de coco"
+      ],
+      "verre": "Tiki mug",
+      "garniture": "Feuille de menthe"
+    },
+    {
+      "nom": "Molosse de Lave",
+      "cocktail": "Lave en Fusion",
+      "ingredients": [
+        "5 cl de rhum épicé",
+        "2 cl de liqueur de piment",
+        "6 cl de jus de mangue"
+      ],
+      "verre": "Tiki mug",
+      "garniture": "Tranche de piment rouge"
+    },
+    {
+      "nom": "Boulistre",
+      "cocktail": "Impact Bleu",
+      "ingredients": [
+        "4 cl de gin",
+        "2 cl de curaçao bleu",
+        "6 cl de tonic"
+      ],
+      "verre": "Verre à martini",
+      "garniture": "Tranche de citron"
+    },
+    {
+      "nom": "Chasseur de Têtes",
+      "cocktail": "Tueur en Série",
+      "ingredients": [
+        "4 cl de mezcal",
+        "2 cl de liqueur de piment",
+        "6 cl de jus de grenade"
+      ],
+      "verre": "Old-fashioned",
+      "garniture": "Rondelle de piment rouge"
+    },
+    {
+      "nom": "Cavabélier",
+      "cocktail": "Charge Nocturne",
+      "ingredients": [
+        "5 cl de rhum brun",
+        "2 cl de liqueur de mûre",
+        "6 cl de soda au cola"
+      ],
+      "verre": "Highball",
+      "garniture": "Cerise noire"
+    },
+    {
+      "nom": "Druide",
+      "cocktail": "Élixir Naturel",
+      "ingredients": [
+        "4 cl de gin",
+        "2 cl de liqueur de sureau",
+        "6 cl d’eau pétillante"
+      ],
+      "verre": "Verre à vin",
+      "garniture": "Branche de romarin"
+    }
+    "nom": "Apprenti Gardien",
+    "cocktail": "Aura Éthérée",
+    "ingredients": [
+      "4 cl de vodka",
+      "2 cl de curaçao bleu",
+      "6 cl de limonade",
+      "1 trait de jus de citron"
+    ],
+    "verre": "Highball",
+    "garniture": "Zeste de citron"
+    },
+    {
+      "nom": "Sorcière",
+      "cocktail": "Élixir Sombre",
+      "ingredients": [
+        "4 cl de rhum noir",
+        "2 cl de liqueur de mûre",
+        "6 cl de jus de raisin",
+        "1 trait de sirop de grenadine",
+        "Glaçons"
+      ],
+      "verre": "Coupette",
+      "garniture": "Mûre"
+    }
+  ]
+}
