@@ -34,11 +34,11 @@
                 document.getElementById("cocktails-List").innerHTML = `
                 <h2>Liste des Cocktails</h2>
                 <ul>
-                    ${data.cocktails.map(cocktail => `<li>${cocktail}</li>`).join("")}
+                    ${data.cocktails.map(cocktail => `<h2>${cocktail}</h2>`).join("")}
                 </ul>
             `;
             } else {
-                document.getElementById("cocktails-List").innerHTML = "<p>Aucun cocktail trouvé.</p>";
+                document.getElementById("cocktails-List").innerHTML = "<p>Erreur dans la récupération des cocktails : CHEH.</p>";
             }
         }
     </script>

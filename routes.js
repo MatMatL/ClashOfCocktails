@@ -42,8 +42,8 @@ router.get("/api/cocktails_list", async (req, res) => {
 
         res.json({ cocktails: allCocktails });
     } catch (error) {
-        console.error("Erreur lors de la lecture des fichiers JSON :", error);
-        res.status(500).json({ error: "Erreur interne du serveur" });
+        console.error("Erreur lors de la lecture des fichiers CHEH :", error);
+        res.status(500).json({ error: "Erreur interne du serveur CHEH" });
     }
 });
 
