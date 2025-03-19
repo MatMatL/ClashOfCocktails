@@ -33,11 +33,7 @@ router.get("/api/cocktails_list", async (req, res) => {
     try {
         const files = ["Cocktails/BlacksTroups.json", "Cocktails/Heros.json", "Cocktails/Troups.json"];
         const filePaths = files.map(file => path.join(__dirname, file));
-
-        // Lire les fichiers JSON en parallèle
         const jsonDataArray = await Promise.all(filePaths.map(readJsonFile));
-
-        // Extraire les noms des cocktails de chaque fichier
         const allCocktails = jsonDataArray.flatMap(jsonData => {
             return jsonData.troupes_noires?.map(troupe => troupe.cocktail) ||
                 jsonData.heros?.map(hero => hero.cocktail) ||
