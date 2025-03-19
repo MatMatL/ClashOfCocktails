@@ -1,20 +1,20 @@
+require("dotenv").config();
 const express = require("express");
+const mongoose = require("mongoose");
+
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Middleware pour servir les fichiers statiques
-app.use(express.static("public"));
+// Connexion à MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("✅ Connecté à MongoDB"))
+.catch(err => console.error("❌ Erreur MongoDB :", err));
 
-// Route API pour récupérer un cocktail
-app.get("/api/cocktail", (req, res) => {
-  res.json({
-    name: "Elixir de Rage",
-    ingredients: ["Rhum", "Jus de grenade", "Sirop de sucre"],
-    description: "Un cocktail puissant inspiré du sort de Rage dans Clash of Clans !",
-  });
-});
+app.use(express.json());
 
-// Lancement du serveur
 app.listen(PORT, () => {
-  console.log(`Serveur en ligne sur http://localhost:${PORT}`);
+  console.log(`🚀 Serveur lancé sur http://localhost:${PORT}`);
 });
