@@ -22,5 +22,26 @@
             `;
         }
     </script>
+
+    <button onclick="getCocktailsList()">Voir la liste des cocktails</button>
+    <div id="cocktails-List"></div>
+
+    <script>
+        async function getCocktailsList() {
+            const response = await fetch("/api/cocktails_list");
+            const data = await response.json();
+            if (data.cocktails && data.cocktails.length > 0) {
+                document.getElementById("cocktails-List").innerHTML = `
+                <h2>Liste des Cocktails</h2>
+                <ul>
+                    ${data.cocktails.map(cocktail => `<li>${cocktail}</li>`).join("")}
+                </ul>
+            `;
+            } else {
+                document.getElementById("cocktails-List").innerHTML = "<p>Aucun cocktail trouvé.</p>";
+            }
+        }
+    </script>
+
 </body>
 </html>
