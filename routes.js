@@ -3,6 +3,7 @@ const fs = require("fs")
 const path = require("path")
 const bcrypt = require('bcrypt');
 const { MongoClient } = require('mongodb');
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const router = express.Router();
@@ -103,4 +104,98 @@ router.post("/api/register", async (req, res) => {
     }
 });
 
-module.exports = router;
+// Route de connexion
+router.post("/api/login", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        console.log("Tentative de connexion pour l'email:", email);
+
+        // Validation des données
+        if (!email || !password) {
+            console.log("Données manquantes:", { email, password });
+            return res.status(400).json({ message: "Email et mot de passe requis" });
+        }
+
+        // Connexion à MongoDB
+        console.log("Connexion à MongoDB...");
+        const client = new MongoClient(process.env.MONGO_URI);
+        await client.connect();
+        console.log("Connecté à MongoDB");
+        
+        const db = client.db("clashofcocktails");
+        const usersCollection = db.collection("users");
+
+        // Recherche de l'utilisateur
+        console.log("Recherche de l'utilisateur...");
+        const user = await usersCollection.findOne({ email });
+        if (!user) {
+            console.log("Utilisateur non trouvé");
+            await client.close();
+            return res.status(401).json({ message: "Email ou mot de passe incorrect" });
+        }
+        console.log("Utilisateur trouvé:", { id: user._id, email: user.email });
+
+        // Vérification du mot de passe
+        console.log("Vérification du mot de passe...");
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            console.log("Mot de passe incorrect");
+            await client.close();
+            return res.status(401).json({ message: "Email ou mot de passe incorrect" });
+        }
+        console.log("Mot de passe valide");
+
+        // Création du token JWT
+        console.log("Création du token JWT...");
+        const token = jwt.sign(
+            { userId: user._id, email: user.email },
+            process.env.JWT_SECRET,
+            { expiresIn: '24h' }
+        );
+
+        await client.close();
+        console.log("Connexion réussie pour l'utilisateur:", user.email);
+
+        // Envoi du token et des informations utilisateur
+        res.json({
+            token,
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email
+            }
+        });
+    } catch (error) {
+        console.error("Erreur détaillée lors de la connexion:", error);
+        if (error.code === 'ECONNREFUSED') {
+            res.status(500).json({ message: "Impossible de se connecter à la base de données" });
+        } else if (error.code === 'ENOTFOUND') {
+            res.status(500).json({ message: "URL de la base de données invalide" });
+        } else {
+            res.status(500).json({ 
+                message: "Erreur lors de la connexion",
+                details: error.message 
+            });
+        }
+    }
+});
+
+// Middleware pour vérifier le token JWT
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (!token) {
+        return res.status(401).json({ message: "Token d'authentification manquant" });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET || 'votre_secret_jwt', (err, user) => {
+        if (err) {
+            return res.status(403).json({ message: "Token invalide" });
+        }
+        req.user = user;
+        next();
+    });
+};
+
+module.exports = { router, authenticateToken };
