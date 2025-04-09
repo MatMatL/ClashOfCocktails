@@ -42,6 +42,7 @@
 
                 const response = await fetch(`/api/cocktail?name=${encodeURIComponent(cocktailName)}`);
                 const cocktail = await response.json();
+                console.log('Données du cocktail reçues:', cocktail);
                 const detailsContainer = document.getElementById('cocktailDetails');
 
                 detailsContainer.innerHTML = `
@@ -49,21 +50,21 @@
                         <div class="cocktail-info">
                             <i class="fas fa-glass-martini-alt cocktail-icon"></i>
                             <h2>${cocktail.name}</h2>
-                            <p>${cocktail.description}</p>
+                            <p class="description">${cocktail.description}</p>
                             <div class="cocktail-ingredients">
-                                <h3>Ingrédients</h3>
+                                <h3><i class="fas fa-list-ul"></i> Ingrédients</h3>
                                 <ul>
                                     ${cocktail.ingredients.map(ingredient => 
-                                        `<li>${ingredient}</li>`
+                                        `<li><i class="fas fa-check"></i> ${ingredient}</li>`
                                     ).join('')}
                                 </ul>
                             </div>
                             <div class="cocktail-glass">
-                                <h3>Verre recommandé</h3>
+                                <h3><i class="fas fa-glass-martini"></i> Verre recommandé</h3>
                                 <p>${cocktail.verre}</p>
                             </div>
                             <div class="cocktail-garnish">
-                                <h3>Garniture</h3>
+                                <h3><i class="fas fa-leaf"></i> Garniture</h3>
                                 <p>${cocktail.garniture}</p>
                             </div>
                         </div>

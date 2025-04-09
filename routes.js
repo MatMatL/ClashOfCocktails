@@ -57,7 +57,14 @@ router.get("/api/cocktail", async (req, res) => {
             return res.status(404).json({ error: "Cocktail non trouvé" });
         }
 
-        res.json(cocktail);
+        // Renvoyer les informations complètes du cocktail
+        res.json({
+            name: cocktail.cocktail,
+            description: `Un cocktail inspiré ${cocktail.nom ? `de ${cocktail.nom}` : 'd\'un personnage légendaire'}`,
+            ingredients: cocktail.ingredients,
+            verre: cocktail.verre,
+            garniture: cocktail.garniture
+        });
     } catch (error) {
         console.error("Erreur lors de la recherche du cocktail:", error);
         res.status(500).json({ error: "Erreur interne du serveur" });
