@@ -207,22 +207,22 @@ router.get('/api/cocktails', async (req, res) => {
         const jsonDataArray = await Promise.all(filePaths.map(readJsonFile));
         const allCocktails = jsonDataArray.flatMap(jsonData => {
             return jsonData.troupes_noires?.map(troupe => ({
-                name: troupe.cocktail.name,
-                description: troupe.cocktail.description,
-                ingredients: troupe.cocktail.ingredients,
-                image: troupe.cocktail.image || "/images/default-cocktail.jpg"
+                name: troupe.cocktail,
+                description: `Un cocktail inspiré de la ${troupe.nom}`,
+                ingredients: troupe.ingredients,
+                image: "/images/archer.png"
             })) ||
             jsonData.heros?.map(hero => ({
-                name: hero.cocktail.name,
-                description: hero.cocktail.description,
-                ingredients: hero.cocktail.ingredients,
-                image: hero.cocktail.image || "/images/default-cocktail.jpg"
+                name: hero.cocktail,
+                description: `Un cocktail inspiré du héros ${hero.nom}`,
+                ingredients: hero.ingredients,
+                image: "/images/archer.png"
             })) ||
             jsonData.troupes?.map(troupe => ({
-                name: troupe.cocktail.name,
-                description: troupe.cocktail.description,
-                ingredients: troupe.cocktail.ingredients,
-                image: troupe.cocktail.image || "/images/default-cocktail.jpg"
+                name: troupe.cocktail,
+                description: `Un cocktail inspiré de la ${troupe.nom}`,
+                ingredients: troupe.ingredients,
+                image: "/images/archer.png"
             })) || [];
         });
 
