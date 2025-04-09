@@ -3,48 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClashOfCocktail</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Clash of Cocktails</title>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <h1>Bienvenue sur ClashOfCocktail</h1>
-    <a href="login.html">Connexion</a>
-    <a href="register.html">Inscription</a>
-    <br>
-    <button onclick="getCocktail()">Découvrir un Cocktail</button>
-    <div id="cocktail-info"></div>
+    <header>
+        <h1>Clash of Cocktails</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/index.html">Accueil</a></li>
+            <li><a href="/cocktails.html">Cocktails</a></li>
+            <li><a href="/login.html">Connexion</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Découvrez nos cocktails</h2>
+        <div class="cocktail-grid" id="cocktailGrid">
+            <!-- Les cocktails seront chargés dynamiquement ici -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Clash of Cocktails. Tous droits réservés.</p>
+    </footer>
 
     <script>
-        async function getCocktail() {
-            const response = await fetch("/api/cocktail");
-            const data = await response.json();
-            document.getElementById("cocktail-info").innerHTML = `
-                <h2>${data.name}</h2>
-                <p><strong>Ingrédients:</strong> ${data.ingredients.join(", ")}</p>
-                <p>${data.description}</p>
-            `;
-        }
-    </script>
+        // Fonction pour charger les cocktails
+        async function loadCocktails() {
+            try {
+                const response = await fetch('/api/cocktails_list');
+                const data = await response.json();
+                const cocktailGrid = document.getElementById('cocktailGrid');
 
-    <button onclick="getCocktailsList()">Voir la liste des cocktails</button>
-    <div id="cocktails-List"></div>
-
-    <script>
-        async function getCocktailsList() {
-            const response = await fetch("/api/cocktails_list");
-            const data = await response.json();
-            if (data.cocktails && data.cocktails.length > 0) {
-                document.getElementById("cocktails-List").innerHTML = `
-                <h2>Liste des Cocktails</h2>
-                <ul>
-                    ${data.cocktails.map(cocktail => `<h3>${cocktail}</h3>`).join("")}
-                </ul>
-            `;
-            } else {
-                document.getElementById("cocktails-List").innerHTML = "<p>Erreur dans la récupération des cocktails : CHEH.</p>";
+                data.cocktails.forEach(cocktail => {
+                    const card = document.createElement('div');
+                    card.className = 'cocktail-card';
+                    card.innerHTML = `
+                        <img src="${cocktail.image || '/images/default-cocktail.jpg'}" alt="${cocktail.name}" class="cocktail-image">
+                        <div class="cocktail-info">
+                            <h3>${cocktail.name}</h3>
+                            <p>${cocktail.description || 'Un délicieux cocktail à découvrir'}</p>
+                        </div>
+                    `;
+                    cocktailGrid.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Erreur lors du chargement des cocktails:', error);
             }
         }
-    </script>
 
+        // Charger les cocktails au chargement de la page
+        document.addEventListener('DOMContentLoaded', loadCocktails);
+    </script>
 </body>
 </html>
