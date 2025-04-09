@@ -26,12 +26,42 @@ const readJsonFile = (filePath) => {
 };
 
 
-router.get("/api/cocktail", (req, res) => {
-    res.json({
-        name: "Elixir de Rage",
-        ingredients: ["Rhum", "Jus de grenade", "Sirop de sucre"],
-        description: "Un cocktail puissant inspiré du sort de Rage dans Clash of Clans !",
-    });
+router.get("/api/cocktail", async (req, res) => {
+    try {
+        const cocktailName = req.query.name;
+        if (!cocktailName) {
+            return res.status(400).json({ error: "Le nom du cocktail est requis" });
+        }
+
+        const files = ["Cocktails/BlacksTroups.json", "Cocktails/Heros.json", "Cocktails/Troups.json"];
+        const filePaths = files.map(file => path.join(__dirname, file));
+        const jsonDataArray = await Promise.all(filePaths.map(readJsonFile));
+
+        let cocktail = null;
+
+        // Rechercher le cocktail dans tous les fichiers
+        for (const jsonData of jsonDataArray) {
+            if (jsonData.troupes_noires) {
+                cocktail = jsonData.troupes_noires.find(t => t.cocktail === cocktailName);
+            }
+            if (!cocktail && jsonData.heros) {
+                cocktail = jsonData.heros.find(h => h.cocktail === cocktailName);
+            }
+            if (!cocktail && jsonData.troupes) {
+                cocktail = jsonData.troupes.find(t => t.cocktail === cocktailName);
+            }
+            if (cocktail) break;
+        }
+
+        if (!cocktail) {
+            return res.status(404).json({ error: "Cocktail non trouvé" });
+        }
+
+        res.json(cocktail);
+    } catch (error) {
+        console.error("Erreur lors de la recherche du cocktail:", error);
+        res.status(500).json({ error: "Erreur interne du serveur" });
+    }
 });
 
 router.get("/api/cocktails_list", async (req, res) => {

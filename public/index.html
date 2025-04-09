@@ -48,7 +48,7 @@
                                 <i class="fas fa-glass-martini-alt cocktail-icon"></i>
                                 <h3>${cocktailName}</h3>
                                 <p>Un délicieux cocktail à découvrir</p>
-                                <button class="discover-btn">Découvrir <i class="fas fa-arrow-right"></i></button>
+                                <a href="/cocktail.html?name=${encodeURIComponent(cocktailName)}" class="discover-btn">Découvrir <i class="fas fa-arrow-right"></i></a>
                             </div>
                         `;
                         cocktailGrid.appendChild(card);
