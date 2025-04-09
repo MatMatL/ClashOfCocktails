@@ -4,6 +4,7 @@ const path = require("path")
 const bcrypt = require('bcrypt');
 const { MongoClient } = require('mongodb');
 const jwt = require('jsonwebtoken');
+const { ObjectId } = require('mongodb');
 require('dotenv').config();
 
 const router = express.Router();
@@ -197,5 +198,39 @@ const authenticateToken = (req, res, next) => {
         next();
     });
 };
+
+// Route pour récupérer tous les cocktails
+router.get('/api/cocktails', async (req, res) => {
+    try {
+        const files = ["Cocktails/BlacksTroups.json", "Cocktails/Heros.json", "Cocktails/Troups.json"];
+        const filePaths = files.map(file => path.join(__dirname, file));
+        const jsonDataArray = await Promise.all(filePaths.map(readJsonFile));
+        const allCocktails = jsonDataArray.flatMap(jsonData => {
+            return jsonData.troupes_noires?.map(troupe => ({
+                name: troupe.cocktail.name,
+                description: troupe.cocktail.description,
+                ingredients: troupe.cocktail.ingredients,
+                image: troupe.cocktail.image || "/images/default-cocktail.jpg"
+            })) ||
+            jsonData.heros?.map(hero => ({
+                name: hero.cocktail.name,
+                description: hero.cocktail.description,
+                ingredients: hero.cocktail.ingredients,
+                image: hero.cocktail.image || "/images/default-cocktail.jpg"
+            })) ||
+            jsonData.troupes?.map(troupe => ({
+                name: troupe.cocktail.name,
+                description: troupe.cocktail.description,
+                ingredients: troupe.cocktail.ingredients,
+                image: troupe.cocktail.image || "/images/default-cocktail.jpg"
+            })) || [];
+        });
+
+        res.json(allCocktails);
+    } catch (error) {
+        console.error("Erreur lors de la lecture des fichiers:", error);
+        res.status(500).json({ error: "Une erreur est survenue lors de la récupération des cocktails" });
+    }
+});
 
 module.exports = { router, authenticateToken };

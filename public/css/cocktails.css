@@ -1,0 +1,138 @@
+.search-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--secondary-color);
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--nav-background);
+}
+
+.search-box i {
+    color: var(--nav-background);
+    margin-right: 0.5rem;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    background: transparent;
+    color: var(--text-color);
+}
+
+.search-box input::placeholder {
+    color: var(--border-color);
+}
+
+.cocktail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 0 1rem;
+}
+
+.cocktail-card {
+    background: var(--card-background);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid var(--nav-background);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cocktail-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(30, 58, 138, 0.2);
+}
+
+.cocktail-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.cocktail-info {
+    padding: 1.5rem;
+}
+
+.cocktail-info h3 {
+    margin: 0 0 1rem 0;
+    color: var(--nav-background);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cocktail-info p {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.cocktail-ingredients {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.cocktail-ingredients h4 {
+    color: var(--nav-background);
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.cocktail-ingredients ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cocktail-ingredients li {
+    color: var(--text-color);
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    background: var(--card-background);
+    border-radius: 15px;
+    border: 2px solid var(--nav-background);
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.no-results i {
+    font-size: 3rem;
+    color: var(--nav-background);
+    margin-bottom: 1rem;
+}
+
+.no-results p {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .cocktail-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-container {
+        margin: 1rem auto;
+    }
+} 
