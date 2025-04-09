@@ -245,19 +245,19 @@ router.get('/api/cocktails', async (req, res) => {
         const allCocktails = jsonDataArray.flatMap(jsonData => {
             return jsonData.troupes_noires?.map(troupe => ({
                 name: troupe.cocktail,
-                description: `Un cocktail inspiré de la ${troupe.nom}`,
+                description: `Inspiration : ${troupe.nom}`,
                 ingredients: troupe.ingredients,
                 image: "/images/archer.png"
             })) ||
             jsonData.heros?.map(hero => ({
                 name: hero.cocktail,
-                description: `Un cocktail inspiré du héros ${hero.nom}`,
+                description: `Inspiration : ${hero.nom}`,
                 ingredients: hero.ingredients,
                 image: "/images/archer.png"
             })) ||
             jsonData.troupes?.map(troupe => ({
                 name: troupe.cocktail,
-                description: `Un cocktail inspiré de la ${troupe.nom}`,
+                description: `Inspiration : ${troupe.nom}`,
                 ingredients: troupe.ingredients,
                 image: "/images/archer.png"
             })) || [];
