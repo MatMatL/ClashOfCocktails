@@ -1,0 +1,109 @@
+.cocktail-details {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.cocktail-details .cocktail-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.cocktail-image-container {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cocktail-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cocktail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cocktail-info h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.cocktail-info .description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.cocktail-section {
+    background: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.cocktail-section h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cocktail-section h3 i {
+    color: var(--accent-color);
+}
+
+.cocktail-ingredients ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+}
+
+.cocktail-ingredients li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: var(--secondary-color);
+    border-radius: 5px;
+}
+
+.cocktail-ingredients li i {
+    color: var(--accent-color);
+}
+
+.cocktail-glass, .cocktail-garnish {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--secondary-color);
+    border-radius: 5px;
+}
+
+.cocktail-glass p, .cocktail-garnish p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .cocktail-details .cocktail-card {
+        grid-template-columns: 1fr;
+    }
+} 
