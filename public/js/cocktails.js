@@ -37,15 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="cocktail-card">
                 <img src="${cocktail.image || '/images/default-cocktail.jpg'}" alt="${cocktail.name}" class="cocktail-image">
                 <div class="cocktail-info">
-                    <h3>${cocktail.name}</h3>
-                    <p>${cocktail.description || 'Un délicieux cocktail à découvrir.'}</p>
-                    <div class="cocktail-ingredients">
-                        <h4>Ingrédients</h4>
-                        <ul>
-                            ${cocktail.ingredients ? cocktail.ingredients.map(ingredient => 
-                                `<li>${ingredient}</li>`
-                            ).join('') : '<li>Aucun ingrédient spécifié</li>'}
-                        </ul>
+                    <div class="cocktail-content">
+                        <h3>${cocktail.name}</h3>
+                        <p>${cocktail.description || 'Un délicieux cocktail à découvrir.'}</p>
+                        <div class="cocktail-ingredients">
+                            <h4>Ingrédients</h4>
+                            <ul>
+                                ${cocktail.ingredients ? cocktail.ingredients.map(ingredient => 
+                                    `<li>${ingredient}</li>`
+                                ).join('') : '<li>Aucun ingrédient spécifié</li>'}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cocktail-footer">
+                        <a href="/cocktail.html?name=${encodeURIComponent(cocktail.name)}" class="discover-btn">Découvrir <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
