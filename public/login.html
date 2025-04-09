@@ -4,27 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - Clash of Cocktails</title>
+    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Connexion</h1>
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+    <header>
+        <h1><i class="fas fa-cocktail"></i> Clash of Cocktails</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/index.html"><i class="fas fa-home"></i> Accueil</a></li>
+            <li><a href="/cocktails.html"><i class="fas fa-glass-martini-alt"></i> Cocktails</a></li>
+            <li><a href="/login.html" class="active"><i class="fas fa-user"></i> Connexion</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="auth-container">
+            <h1>Connexion</h1>
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="auth-btn">
+                    Se connecter <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+            <div id="errorMessage" class="error"></div>
+            <div class="register-link">
+                Pas encore de compte ? <a href="/register.html">S'inscrire</a>
             </div>
-            <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Se connecter</button>
-        </form>
-        <div id="errorMessage" class="error"></div>
-        <div class="register-link">
-            Pas encore de compte ? <a href="/register.html">S'inscrire</a>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <p><i class="fas fa-copyright"></i> 2024 Clash of Cocktails. Tous droits réservés.</p>
+    </footer>
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
@@ -48,10 +70,16 @@
                     localStorage.setItem('token', data.token);
                     window.location.href = '/index.html';
                 } else {
-                    document.getElementById('errorMessage').textContent = data.message;
+                    document.getElementById('errorMessage').innerHTML = `
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>${data.message}</p>
+                    `;
                 }
             } catch (error) {
-                document.getElementById('errorMessage').textContent = 'Une erreur est survenue lors de la connexion';
+                document.getElementById('errorMessage').innerHTML = `
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>Une erreur est survenue. Veuillez réessayer.</p>
+                `;
             }
         });
     </script>
