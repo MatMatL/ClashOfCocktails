@@ -250,4 +250,23 @@ footer p {
 .error i, .no-cocktails i {
     margin-right: 0.5rem;
     font-size: 1.5rem;
+}
+
+/* Navigation : affichage du nom utilisateur et bouton déconnexion */
+.nav-user-info span,
+.nav-logout button {
+    color: var(--secondary-color);
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+.nav-user-info span:hover,
+.nav-logout button:hover {
+    background: var(--nav-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
 } 
