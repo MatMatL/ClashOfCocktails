@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Favoris - Clash of Cocktails</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/cocktails.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-cocktail"></i> Clash of Cocktails</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/index.html"><i class="fas fa-home"></i> Accueil</a></li>
+            <li><a href="/cocktails.html"><i class="fas fa-glass-martini-alt"></i> Cocktails</a></li>
+            <li><a href="/login.html"><i class="fas fa-user"></i> Connexion</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Mes Favoris</h2>
+        <div class="cocktail-grid" id="favoritesGrid"></div>
+        <div class="no-favorites" style="display:none;">
+            <i class="fas fa-heart-crack"></i>
+            <p>Vous n'avez pas encore de favoris.</p>
+        </div>
+    </main>
+    <footer>
+        <p><i class="fas fa-copyright"></i> 2024 Clash of Cocktails</p>
+    </footer>
+
+    <script src="/js/favorites.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const grid = document.getElementById('favoritesGrid');
+            const noFav = document.querySelector('.no-favorites');
+            const favs = await loadFavorites();
+            if (!favs.length) {
+                noFav.style.display = 'block';
+                return;
+            }
+            // Charger tous les cocktails avec images (même source que cocktails.html)
+            let allCocktails = [];
+            try {
+                allCocktails = await fetch('/api/cocktails').then(res => res.json());
+            } catch (err) {
+                console.error('Erreur chargement cocktails :', err);
+            }
+            favs.forEach(itemName => {
+                const item = allCocktails.find(c => c.name === itemName);
+                if (!item) return;
+                const card = document.createElement('div');
+                card.className = 'cocktail-card';
+                card.innerHTML = `
+                    <img src="${item.image || '/images/default-cocktail.jpg'}" alt="${item.name}" class="cocktail-image"/>
+                    <div class="cocktail-info">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                        <button class="fav-btn" data-name="${item.name}">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <a href="/cocktail.html?name=${encodeURIComponent(item.name)}" class="discover-btn">
+                            Découvrir <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+                // Gestion de la suppression du favori
+                card.querySelector('.fav-btn').addEventListener('click', async () => {
+                    await removeFromFavorites(item.name);
+                    card.remove();
+                    if (!grid.children.length) noFav.style.display = 'block';
+                });
+            });
+        });
+    </script>
+    <script src="/js/navbar.js"></script>
+</body>
+</html> 

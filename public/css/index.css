@@ -58,6 +58,11 @@ nav ul {
     gap: 2rem;
 }
 
+nav ul li {
+    display: inline-flex;
+    align-items: center;
+}
+
 nav ul li a {
     color: var(--secondary-color);
     text-decoration: none;
@@ -252,16 +257,24 @@ footer p {
     font-size: 1.5rem;
 }
 
-/* Navigation : affichage du nom utilisateur et bouton déconnexion */
+/* Navigation : harmonisation avec les autres boutons */
 .nav-user-info span,
 .nav-logout button {
-    color: var(--secondary-color);
-    background: none;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.8rem 1.5rem;
+    margin: 0;
+    line-height: 1;
+    color: var(--secondary-color);
+    text-decoration: none;
     border-radius: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--nav-hover);
+    background: none;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 .nav-user-info span:hover,
@@ -269,4 +282,26 @@ footer p {
     background: var(--nav-hover);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+}
+
+/* Styles pour le bouton favoris dans les cartes */
+.fav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: transform 0.2s ease;
+}
+.fav-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Ajustement du bouton cœur en fiche détaillée */
+.fav-btn.discover-btn {
+    padding: 0.6rem 1rem;    /* un peu plus compact */
+}
+.fav-btn.discover-btn i {
+    font-size: 1.2rem;       /* garder le cœur visible */
 } 

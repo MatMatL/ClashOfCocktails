@@ -31,39 +31,61 @@
         <p><i class="fas fa-copyright"></i> 2024 Clash of Cocktails. Tous droits réservés.</p>
     </footer>
 
+    <!-- Charger la logique favoris -->
+    <script src="/js/favorites.js"></script>
+
     <script>
-        // Fonction pour charger les cocktails
+        // Fonction optimisée pour charger les cocktails avec cœur de favoris
         async function loadCocktails() {
+            const cocktailGrid = document.getElementById('cocktailGrid');
+            cocktailGrid.innerHTML = '';
+            const favorites = await loadFavorites(); // <- on récupère les favoris
             try {
                 const response = await fetch('/api/cocktails_list');
                 const data = await response.json();
-                const cocktailGrid = document.getElementById('cocktailGrid');
 
                 if (data.cocktails && data.cocktails.length > 0) {
-                    data.cocktails.forEach(cocktailName => {
+                    data.cocktails.forEach(name => {
                         const card = document.createElement('div');
                         card.className = 'cocktail-card';
+                        const isFav = favorites.includes(name);
                         card.innerHTML = `
                             <div class="cocktail-info">
                                 <i class="fas fa-glass-martini-alt cocktail-icon"></i>
-                                <h3>${cocktailName}</h3>
+                                <h3>${name}</h3>
                                 <p>Un délicieux cocktail à découvrir</p>
-                                <a href="/cocktail.html?name=${encodeURIComponent(cocktailName)}" class="discover-btn">Découvrir <i class="fas fa-arrow-right"></i></a>
+                                <button class="fav-btn" data-name="${name}">
+                                    <i class="${isFav ? 'fas' : 'far'} fa-heart"></i>
+                                </button>
+                                <a href="/cocktail.html?name=${encodeURIComponent(name)}" class="discover-btn">
+                                    Découvrir <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
                         `;
                         cocktailGrid.appendChild(card);
                     });
+                    // Attachement des listeners sur les cœurs
+                    document.querySelectorAll('.fav-btn').forEach(btn => {
+                        btn.addEventListener('click', async () => {
+                            const name = btn.dataset.name;
+                            const icon = btn.querySelector('i');
+                            if (icon.classList.contains('fas')) {
+                                await removeFromFavorites(name);
+                                icon.classList.replace('fas','far');
+                            } else {
+                                await addToFavorites(name);
+                                icon.classList.replace('far','fas');
+                            }
+                        });
+                    });
                 } else {
-                    cocktailGrid.innerHTML = '<p class="no-cocktails"><i class="fas fa-exclamation-circle"></i> Aucun cocktail disponible pour le moment.</p>';
+                    cocktailGrid.innerHTML = '<p class="no-cocktails"><i class="fas fa-exclamation-circle"></i> Aucun cocktail disponible.</p>';
                 }
-            } catch (error) {
-                console.error('Erreur lors du chargement des cocktails:', error);
-                const cocktailGrid = document.getElementById('cocktailGrid');
-                cocktailGrid.innerHTML = '<p class="error"><i class="fas fa-exclamation-triangle"></i> Erreur lors du chargement des cocktails. Veuillez réessayer plus tard.</p>';
+            } catch (err) {
+                console.error(err);
+                cocktailGrid.innerHTML = '<p class="error"><i class="fas fa-exclamation-triangle"></i> Erreur de chargement.</p>';
             }
         }
-
-        // Charger les cocktails au chargement de la page
         document.addEventListener('DOMContentLoaded', loadCocktails);
     </script>
     <script src="/js/navbar.js"></script>

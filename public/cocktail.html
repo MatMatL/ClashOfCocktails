@@ -23,31 +23,37 @@
     </nav>
 
     <main>
-        <div id="cocktailDetails" class="cocktail-details">
-            <!-- Les détails du cocktail seront chargés ici -->
-        </div>
+        <div id="cocktailDetails" class="cocktail-details"></div>
     </main>
 
     <footer>
         <p><i class="fas fa-copyright"></i> 2024 Clash of Cocktails. Tous droits réservés.</p>
     </footer>
 
+    <script src="/js/favorites.js"></script>
     <script>
         async function loadCocktailDetails() {
             try {
-                const urlParams = new URLSearchParams(window.location.search);
-                const cocktailName = urlParams.get('name');
-                
-                if (!cocktailName) {
-                    throw new Error('Nom du cocktail non spécifié');
-                }
+                const params = new URLSearchParams(window.location.search);
+                const name = params.get('name');
+                if (!name) throw new Error('Nom du cocktail non spécifié');
 
-                const response = await fetch(`/api/cocktail?name=${encodeURIComponent(cocktailName)}`);
-                const cocktail = await response.json();
-                const detailsContainer = document.getElementById('cocktailDetails');
+                // Charger en parallèle les détails et la liste des favoris
+                const [resCocktail, favs] = await Promise.all([
+                    fetch(`/api/cocktail?name=${encodeURIComponent(name)}`),
+                    loadFavorites()
+                ]);
+                const cocktail = await resCocktail.json();
+                let isFav = favs.includes(cocktail.name);
 
-                detailsContainer.innerHTML = `
+                const details = document.getElementById('cocktailDetails');
+                details.innerHTML = `
                     <div class="cocktail-card">
+                        <div class="cocktail-actions">
+                            <button id="favBtn" class="discover-btn fav-btn">
+                                <i class="${isFav ? 'fas' : 'far'} fa-heart"></i>
+                            </button>
+                        </div>
                         <div class="cocktail-image-container">
                             <img src="${cocktail.image || '/images/archer.png'}" alt="${cocktail.name}">
                         </div>
@@ -57,39 +63,46 @@
                             <div class="cocktail-section cocktail-ingredients">
                                 <h3><i class="fas fa-list-ul"></i> Ingrédients</h3>
                                 <ul>
-                                    ${cocktail.ingredients.map(ingredient => 
-                                        `<li><i class="fas fa-check"></i> ${ingredient}</li>`
-                                    ).join('')}
+                                    ${cocktail.ingredients.map(i => `<li><i class="fas fa-check"></i> ${i}</li>`).join('')}
                                 </ul>
                             </div>
                             <div class="cocktail-section">
-                                <div class="cocktail-glass">
-                                    <h3><i class="fas fa-glass-martini"></i> Verre recommandé</h3>
-                                    <p>${cocktail.verre}</p>
-                                </div>
+                                <h3><i class="fas fa-glass-martini"></i> Verre</h3>
+                                <p>${cocktail.verre}</p>
                             </div>
                             <div class="cocktail-section">
-                                <div class="cocktail-garnish">
-                                    <h3><i class="fas fa-leaf"></i> Garniture</h3>
-                                    <p>${cocktail.garniture}</p>
-                                </div>
+                                <h3><i class="fas fa-leaf"></i> Garniture</h3>
+                                <p>${cocktail.garniture}</p>
                             </div>
                         </div>
                     </div>
                 `;
+
+                // Gestion du clic favori
+                document.getElementById('favBtn').addEventListener('click', async () => {
+                    const icon = document.querySelector('#favBtn i');
+                    if (icon.classList.contains('fas')) {
+                        await removeFromFavorites(name);
+                        icon.classList.replace('fas','far');
+                    } else {
+                        await addToFavorites(name);
+                        icon.classList.replace('far','fas');
+                    }
+                    isFav = !isFav;
+                });
             } catch (error) {
-                console.error('Erreur lors du chargement des détails du cocktail:', error);
-                const detailsContainer = document.getElementById('cocktailDetails');
-                detailsContainer.innerHTML = `
+                console.error('Erreur chargement détail:', error);
+                document.getElementById('cocktailDetails').innerHTML = `
                     <div class="error">
                         <i class="fas fa-exclamation-triangle"></i>
-                        <p>Erreur lors du chargement des détails du cocktail. Veuillez réessayer plus tard.</p>
+                        <p>Impossible de charger ce cocktail.</p>
                     </div>
                 `;
             }
         }
-
         document.addEventListener('DOMContentLoaded', loadCocktailDetails);
     </script>
+
+    <script src="/js/navbar.js"></script>
 </body>
 </html> 

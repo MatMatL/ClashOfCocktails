@@ -3,16 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     const noResults = document.querySelector('.no-results');
     let cocktails = [];
+    let favorites = [];
 
     // Fonction pour charger les cocktails
     async function loadCocktails() {
         try {
+            favorites = await loadFavorites();
             const response = await fetch('/api/cocktails');
             if (!response.ok) {
                 throw new Error('Erreur lors du chargement des cocktails');
             }
             cocktails = await response.json();
-            displayCocktails(cocktails);
+            displayCocktails(cocktails, favorites);
         } catch (error) {
             console.error('Erreur:', error);
             cocktailGrid.innerHTML = `
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Fonction pour afficher les cocktails
-    function displayCocktails(cocktailsToDisplay) {
+    function displayCocktails(cocktailsToDisplay, favoritesList) {
         if (cocktailsToDisplay.length === 0) {
             noResults.style.display = 'block';
             cocktailGrid.innerHTML = '';
@@ -33,7 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         noResults.style.display = 'none';
-        cocktailGrid.innerHTML = cocktailsToDisplay.map(cocktail => `
+        cocktailGrid.innerHTML = cocktailsToDisplay.map(cocktail => {
+            const isFav = favoritesList.includes(cocktail.name);
+            return `
             <div class="cocktail-card">
                 <img src="${cocktail.image || '/images/default-cocktail.jpg'}" alt="${cocktail.name}" class="cocktail-image">
                 <div class="cocktail-info">
@@ -50,11 +54,28 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="cocktail-footer">
+                        <button class="fav-btn" data-name="${cocktail.name}">
+                            <i class="${isFav ? 'fas' : 'far'} fa-heart"></i>
+                        </button>
                         <a href="/cocktail.html?name=${encodeURIComponent(cocktail.name)}" class="discover-btn">Découvrir <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-            </div>
-        `).join('');
+            </div>`;
+        }).join('');
+
+        document.querySelectorAll('.fav-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const name = btn.dataset.name;
+                const icon = btn.querySelector('i');
+                if (icon.classList.contains('fas')) {
+                    await removeFromFavorites(name);
+                    icon.classList.replace('fas', 'far');
+                } else {
+                    await addToFavorites(name);
+                    icon.classList.replace('far', 'fas');
+                }
+            });
+        });
     }
 
     // Fonction de recherche
@@ -67,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                        ingredient.toLowerCase().includes(searchLower)
                    ));
         });
-        displayCocktails(filteredCocktails);
+        displayCocktails(filteredCocktails, favorites);
     }
 
     // Événement de recherche

@@ -21,9 +21,8 @@ async function addToFavorites(cocktailName) {
             body: JSON.stringify({ cocktailName })
         });
 
-        if (response.ok) {
-            alert('Cocktail ajouté aux favoris !');
-        } else {
+        // Plus de popup de confirmation ; on affiche uniquement les erreurs
+        if (!response.ok) {
             const data = await response.json();
             alert(data.message || 'Erreur lors de l\'ajout aux favoris');
         }
@@ -49,9 +48,7 @@ async function removeFromFavorites(cocktailName) {
             body: JSON.stringify({ cocktailName })
         });
 
-        if (response.ok) {
-            alert('Cocktail retiré des favoris');
-        } else {
+        if (!response.ok) {
             const data = await response.json();
             alert(data.message || 'Erreur lors du retrait des favoris');
         }

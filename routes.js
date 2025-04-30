@@ -2,9 +2,8 @@ const express = require("express");
 const fs = require("fs")
 const path = require("path")
 const bcrypt = require('bcrypt');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const jwt = require('jsonwebtoken');
-const { ObjectId } = require('mongodb');
 require('dotenv').config();
 
 const router = express.Router();
@@ -120,6 +119,7 @@ router.post("/api/register", async (req, res) => {
             username,
             email,
             password: hashedPassword,
+            favorites: [],
             createdAt: new Date()
         };
 
@@ -267,6 +267,65 @@ router.get('/api/cocktails', async (req, res) => {
     } catch (error) {
         console.error("Erreur lors de la lecture des fichiers:", error);
         res.status(500).json({ error: "Une erreur est survenue lors de la récupération des cocktails" });
+    }
+});
+
+// 💜 Routes pour la gestion des favoris (embed dans users, pas de nouvelle "table")
+router.post('/api/favorites/add', authenticateToken, async (req, res) => {
+    const { cocktailName } = req.body;
+    if (!cocktailName) return res.status(400).json({ message: "Nom du cocktail requis" });
+    const client = new MongoClient(process.env.MONGO_URI);
+    try {
+        await client.connect();
+        const db = client.db("clashofcocktails");
+        const users = db.collection("users");
+        await users.updateOne(
+            { _id: new ObjectId(req.user.userId) },
+            { $addToSet: { favorites: cocktailName } }
+        );
+        res.json({ message: "Cocktail ajouté aux favoris" });
+    } catch (error) {
+        console.error("Erreur ajout favoris :", error);
+        res.status(500).json({ message: "Erreur lors de l'ajout aux favoris" });
+    } finally {
+        await client.close();
+    }
+});
+
+router.post('/api/favorites/remove', authenticateToken, async (req, res) => {
+    const { cocktailName } = req.body;
+    if (!cocktailName) return res.status(400).json({ message: "Nom du cocktail requis" });
+    const client = new MongoClient(process.env.MONGO_URI);
+    try {
+        await client.connect();
+        const db = client.db("clashofcocktails");
+        const users = db.collection("users");
+        await users.updateOne(
+            { _id: new ObjectId(req.user.userId) },
+            { $pull: { favorites: cocktailName } }
+        );
+        res.json({ message: "Cocktail retiré des favoris" });
+    } catch (error) {
+        console.error("Erreur retrait favoris :", error);
+        res.status(500).json({ message: "Erreur lors du retrait des favoris" });
+    } finally {
+        await client.close();
+    }
+});
+
+router.get('/api/favorites', authenticateToken, async (req, res) => {
+    const client = new MongoClient(process.env.MONGO_URI);
+    try {
+        await client.connect();
+        const db = client.db("clashofcocktails");
+        const users = db.collection("users");
+        const user = await users.findOne({ _id: new ObjectId(req.user.userId) });
+        res.json({ favorites: user.favorites || [] });
+    } catch (error) {
+        console.error("Erreur récupération favoris :", error);
+        res.status(500).json({ message: "Erreur lors de la récupération des favoris" });
+    } finally {
+        await client.close();
     }
 });
 

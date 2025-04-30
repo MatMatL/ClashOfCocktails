@@ -22,12 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
         // cacher login / register
         loginLi?.remove();
         registerLi?.remove();
-        // afficher nom d'utilisateur
+
+        // lien vers la page Mes Favoris
+        const favLi = document.createElement("li");
+        favLi.className = "nav-fav";
+        favLi.innerHTML = `<a href="/favorites.html"><i class="fas fa-heart"></i> Favoris</a>`;
+        navUl.appendChild(favLi);
+
+        // afficher le nom d'utilisateur
         const userLi = document.createElement("li");
         userLi.className = "nav-user-info";
         userLi.innerHTML = `<span><i class="fas fa-user-circle"></i> ${user.username}</span>`;
         navUl.appendChild(userLi);
-        // bouton logout
+
+        // bouton déconnexion
         const logoutLi = document.createElement("li");
         logoutLi.className = "nav-logout";
         logoutLi.innerHTML = `<button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Se déconnecter</button>`;
