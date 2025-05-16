@@ -8,6 +8,9 @@ require('dotenv').config();
 
 const router = express.Router();
 
+// Configuration pour servir les images depuis le dossier Cocktails
+router.use('/images', express.static(path.join(__dirname, 'Cocktails')));
+
 const readJsonFile = (filePath) => {
     return new Promise((resolve, reject) => {
         fs.readFile(filePath, "utf8", (err, data) => {
@@ -56,13 +59,21 @@ router.get("/api/cocktail", async (req, res) => {
             return res.status(404).json({ error: "Cocktail non trouvé" });
         }
 
+        // Convertir le chemin de l'image
+        const processImage = (imagePath) => {
+            if (!imagePath) return '/images/default-cocktail.jpg';
+            // Retirer le préfixe "Cocktails/" et ajouter "/images/"
+            return '/images/' + imagePath.replace('Cocktails/', '');
+        };
+
         // Renvoyer les informations complètes du cocktail
         res.json({
             name: cocktail.cocktail,
             description: `Un cocktail inspiré ${cocktail.nom ? `de ${cocktail.nom}` : 'd\'un personnage légendaire'}`,
             ingredients: cocktail.ingredients,
             verre: cocktail.verre,
-            garniture: cocktail.garniture
+            garniture: cocktail.garniture,
+            image: processImage(cocktail.image)
         });
     } catch (error) {
         console.error("Erreur lors de la recherche du cocktail:", error);
@@ -243,23 +254,29 @@ router.get('/api/cocktails', async (req, res) => {
         const filePaths = files.map(file => path.join(__dirname, file));
         const jsonDataArray = await Promise.all(filePaths.map(readJsonFile));
         const allCocktails = jsonDataArray.flatMap(jsonData => {
+            const processImage = (imagePath) => {
+                if (!imagePath) return '/images/default-cocktail.jpg';
+                // Retirer le préfixe "Cocktails/" et ajouter "/images/"
+                return '/images/' + imagePath.replace('Cocktails/', '');
+            };
+
             return jsonData.troupes_noires?.map(troupe => ({
                 name: troupe.cocktail,
                 description: `Inspiration : ${troupe.nom}`,
                 ingredients: troupe.ingredients,
-                image: "/images/archer.png"
+                image: processImage(troupe.image)
             })) ||
             jsonData.heros?.map(hero => ({
                 name: hero.cocktail,
                 description: `Inspiration : ${hero.nom}`,
                 ingredients: hero.ingredients,
-                image: "/images/archer.png"
+                image: processImage(hero.image)
             })) ||
             jsonData.troupes?.map(troupe => ({
                 name: troupe.cocktail,
                 description: `Inspiration : ${troupe.nom}`,
                 ingredients: troupe.ingredients,
-                image: "/images/archer.png"
+                image: processImage(troupe.image)
             })) || [];
         });
 

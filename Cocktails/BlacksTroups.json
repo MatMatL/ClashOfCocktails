@@ -9,7 +9,8 @@
         "6 cl de tonic"
       ],
       "verre": "Highball",
-      "garniture": "Mûre"
+      "garniture": "Mûre",
+      "image" : "Cocktails/blacks_troups_images/Gargouille.png"
     },
     {
       "nom": "Chevaucheur de Cochon",
@@ -20,7 +21,8 @@
         "6 cl de ginger beer"
       ],
       "verre": "Old-fashioned",
-      "garniture": "Rondelle de citron vert"
+      "garniture": "Rondelle de citron vert",
+      "image" : "Cocktails/blacks_troups_images/Chevaucheur_de_cochon.png"
     },
     {
       "nom": "Valkyrie",
@@ -31,7 +33,8 @@
         "6 cl de jus de cranberry"
       ],
       "verre": "Hurricane",
-      "garniture": "Cerise flambée"
+      "garniture": "Cerise flambée",
+      "image" : "Cocktails/blacks_troups_images/Valkyrie.png"
     },
     {
       "nom": "Golem",
@@ -42,7 +45,8 @@
         "6 cl de soda au cola"
       ],
       "verre": "Old-fashioned",
-      "garniture": "Zeste d’orange"
+      "garniture": "Zeste d’orange",
+      "image" : "Cocktails/blacks_troups_images/Golem.png"
     },
     {
       "nom": "Golem de Glace",
@@ -53,7 +57,8 @@
         "6 cl de lait de coco"
       ],
       "verre": "Tiki mug",
-      "garniture": "Feuille de menthe"
+      "garniture": "Feuille de menthe",
+      "image" : "Cocktails/blacks_troups_images/Golem_de_glace.png"
     },
     {
       "nom": "Molosse de Lave",
@@ -64,7 +69,8 @@
         "6 cl de jus de mangue"
       ],
       "verre": "Tiki mug",
-      "garniture": "Tranche de piment rouge"
+      "garniture": "Tranche de piment rouge",
+      "image" : "Cocktails/blacks_troups_images/Molosse_de_lave.png"
     },
     {
       "nom": "Bouliste",
@@ -75,7 +81,8 @@
         "6 cl de tonic"
       ],
       "verre": "Verre à martini",
-      "garniture": "Tranche de citron"
+      "garniture": "Tranche de citron",
+      "image" : "Cocktails/blacks_troups_images/Bouliste.png"
     },
     {
       "nom": "Chasseur de Têtes",
@@ -86,7 +93,8 @@
         "6 cl de jus de grenade"
       ],
       "verre": "Old-fashioned",
-      "garniture": "Rondelle de piment rouge"
+      "garniture": "Rondelle de piment rouge",
+      "image" : "Cocktails/blacks_troups_images/Chasseur_de_tetes.png"
     },
     {
       "nom": "Cavabélier",
@@ -97,7 +105,8 @@
         "6 cl de soda au cola"
       ],
       "verre": "Highball",
-      "garniture": "Cerise noire"
+      "garniture": "Cerise noire",
+      "image" : "Cocktails/blacks_troups_images/Cavabelier.png"
     },
     {
       "nom": "Druide",
@@ -108,7 +117,8 @@
         "6 cl d’eau pétillante"
       ],
       "verre": "Verre à vin",
-      "garniture": "Branche de romarin"
+      "garniture": "Branche de romarin",
+      "image": "Cocktails/blacks_troups_images/Druide.png"
     },
     {
     "nom": "Apprenti Gardien",
@@ -120,7 +130,8 @@
       "1 trait de jus de citron"
     ],
     "verre": "Highball",
-    "garniture": "Zeste de citron"
+    "garniture": "Zeste de citron",
+    "image" : "Cocktails/blacks_troups_images/Apprenti_gardien.png"
     },
     {
       "nom": "Sorcière",
@@ -133,7 +144,8 @@
         "Glaçons"
       ],
       "verre": "Coupette",
-      "garniture": "Mûre"
+      "garniture": "Mûre",
+      "image" : "Cocktails/blacks_troups_images/Sorciere.png"
     }
   ]
 }

@@ -9,7 +9,8 @@
         "6 cl de jus de pomme"
       ],
       "verre": "Old-fashioned",
-      "garniture": "Bâton de cannelle"
+      "garniture": "Bâton de cannelle",
+      "image" : "Cocktails/Heros_images/Roi_des_barbares.png"
     },
     {
       "nom": "Reine des Archers",
@@ -20,7 +21,8 @@
         "6 cl de champagne"
       ],
       "verre": "Flûte",
-      "garniture": "Framboise"
+      "garniture": "Framboise",
+      "image" : "Cocktails/Heros_images/Reine_des_archers.png"
     },
     {
       "nom": "Grand Gardien",
@@ -28,10 +30,11 @@
       "ingredients": [
         "4 cl de gin",
         "2 cl de sirop de violette",
-        "6 cl d’eau gazeuse"
+        "6 cl d'eau gazeuse"
       ],
       "verre": "Verre à vin",
-      "garniture": "Brin de lavande"
+      "garniture": "Brin de lavande",
+      "image" : "Cocktails/Heros_images/Grand_gardien.png"
     },
     {
       "nom": "Championne Royale",
@@ -39,10 +42,11 @@
       "ingredients": [
         "5 cl de rhum ambré",
         "2 cl de liqueur de vanille",
-        "6 cl de jus d’ananas"
+        "6 cl de jus d'ananas"
       ],
       "verre": "Hurricane",
-      "garniture": "Tranche d’ananas"
+      "garniture": "Tranche d'ananas",
+      "image" : "Cocktails/Heros_images/Championne_royale.png"
     }
   ]
 }

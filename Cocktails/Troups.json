@@ -11,7 +11,8 @@
         "Glaçons"
       ],
       "verre": "Old-fashioned",
-      "garniture": "Cerise"
+      "garniture": "Cerise",
+      "image": "Cocktails/Troups_images/Barbare.png"
     },
     {
       "nom": "Archer",
@@ -24,7 +25,8 @@
         "Glaçons"
       ],
       "verre": "Martini",
-      "garniture": "Framboise"
+      "garniture": "Framboise",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Géant",
@@ -37,7 +39,8 @@
         "Glaçons"
       ],
       "verre": "Grand verre",
-      "garniture": "Rondelle d’orange"
+      "garniture": "Rondelle d’orange",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Gobelin",
@@ -50,7 +53,8 @@
         "Glaçons"
       ],
       "verre": "Tiki mug",
-      "garniture": "Tranche d’ananas et feuille de menthe"
+      "garniture": "Tranche d’ananas et feuille de menthe",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Sapeur",
@@ -62,7 +66,8 @@
         "1 trait de sirop d’agave"
       ],
       "verre": "Margarita",
-      "garniture": "Zeste de citron vert"
+      "garniture": "Zeste de citron vert",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Ballon",
@@ -73,7 +78,8 @@
         "6 cl de cola"
       ],
       "verre": "Old-fashioned",
-      "garniture": "Cerise noire"
+      "garniture": "Cerise noire",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Sorcier",
@@ -84,7 +90,8 @@
         "6 cl de tonic"
       ],
       "verre": "Verre à martini",
-      "garniture": "Rondelle de citron"
+      "garniture": "Rondelle de citron",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Guérisseuse",
@@ -95,7 +102,8 @@
         "6 cl de prosecco"
       ],
       "verre": "Flûte",
-      "garniture": "Fleur comestible"
+      "garniture": "Fleur comestible",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Dragon",
@@ -106,7 +114,8 @@
         "6 cl de jus de mangue"
       ],
       "verre": "Tiki mug",
-      "garniture": "Piment rouge"
+      "garniture": "Piment rouge",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "P.E.K.K.A",
@@ -117,7 +126,8 @@
         "6 cl de soda au cola"
       ],
       "verre": "Verre highball",
-      "garniture": "Bâton de réglisse"
+      "garniture": "Bâton de réglisse",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Bébé Dragon",
@@ -129,7 +139,8 @@
         "1 trait de sirop de grenadine"
       ],
       "verre": "Highball",
-      "garniture": "Rondelle d’orange"
+      "garniture": "Rondelle d’orange",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Mineur",
@@ -141,7 +152,8 @@
         "1 trait d’Angostura bitters"
       ],
       "verre": "Old-fashioned",
-      "garniture": "Zeste d’orange"
+      "garniture": "Zeste d’orange",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Électro-Dragon",
@@ -152,7 +164,8 @@
         "6 cl de Red Bull"
       ],
       "verre": "Highball",
-      "garniture": "Tranche de citron"
+      "garniture": "Tranche de citron",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Yéti",
@@ -163,7 +176,8 @@
         "6 cl de lait de coco"
       ],
       "verre": "Tiki mug",
-      "garniture": "Noix de coco râpée"
+      "garniture": "Noix de coco râpée",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Chevaucher de dragon",
@@ -174,7 +188,8 @@
         "6 cl de jus de fruit de la passion"
       ],
       "verre": "Hurricane",
-      "garniture": "Bâton de cannelle"
+      "garniture": "Bâton de cannelle",
+      "image": "Cocktails/Troups_images/Archer.png"
     },
     {
       "nom": "Electro-Titanide",
@@ -185,7 +200,8 @@
         "6 cl de jus de citron"
       ],
       "verre": "Verre old-fashioned",
-      "garniture": "Écorce de citron"
+      "garniture": "Écorce de citron",
+      "image": "Cocktails/Troups_images/Archer.png"
     }
   ]
 }
