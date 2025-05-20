@@ -1,3 +1,4 @@
+
 {
   "troupes": [
     {
@@ -40,7 +41,7 @@
       ],
       "verre": "Grand verre",
       "garniture": "Rondelle d’orange",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Golem.png"
     },
     {
       "nom": "Gobelin",
@@ -54,7 +55,7 @@
       ],
       "verre": "Tiki mug",
       "garniture": "Tranche d’ananas et feuille de menthe",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Gobelin.png"
     },
     {
       "nom": "Sapeur",
@@ -67,7 +68,7 @@
       ],
       "verre": "Margarita",
       "garniture": "Zeste de citron vert",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Sapeur.png"
     },
     {
       "nom": "Ballon",
@@ -79,7 +80,7 @@
       ],
       "verre": "Old-fashioned",
       "garniture": "Cerise noire",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Ballon.png"
     },
     {
       "nom": "Sorcier",
@@ -91,7 +92,7 @@
       ],
       "verre": "Verre à martini",
       "garniture": "Rondelle de citron",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Sorcier.png"
     },
     {
       "nom": "Guérisseuse",
@@ -103,7 +104,7 @@
       ],
       "verre": "Flûte",
       "garniture": "Fleur comestible",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Guerisseuse.png"
     },
     {
       "nom": "Dragon",
@@ -115,7 +116,7 @@
       ],
       "verre": "Tiki mug",
       "garniture": "Piment rouge",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Dragon.png"
     },
     {
       "nom": "P.E.K.K.A",
@@ -127,7 +128,7 @@
       ],
       "verre": "Verre highball",
       "garniture": "Bâton de réglisse",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Pekka.png"
     },
     {
       "nom": "Bébé Dragon",
@@ -140,7 +141,7 @@
       ],
       "verre": "Highball",
       "garniture": "Rondelle d’orange",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Bbdragon.png"
     },
     {
       "nom": "Mineur",
@@ -153,7 +154,7 @@
       ],
       "verre": "Old-fashioned",
       "garniture": "Zeste d’orange",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Mineur.png"
     },
     {
       "nom": "Électro-Dragon",
