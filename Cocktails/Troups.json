@@ -166,9 +166,10 @@
       ],
       "verre": "Highball",
       "garniture": "Tranche de citron",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Electro_dragon.png"
     },
     {
+
       "nom": "Yéti",
       "cocktail": "Blizzard",
       "ingredients": [
@@ -178,11 +179,11 @@
       ],
       "verre": "Tiki mug",
       "garniture": "Noix de coco râpée",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Yeti.png"
     },
     {
-      "nom": "Chevaucher de dragon",
-      "cocktail": "Cavalier en Feu",
+      "nom": "Chevaucheur de dragon",
+      "cocktail": "Cavalier enflammé",
       "ingredients": [
         "5 cl de rhum brun",
         "2 cl de liqueur de cannelle",
@@ -190,7 +191,7 @@
       ],
       "verre": "Hurricane",
       "garniture": "Bâton de cannelle",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Chevaucheur_de_dragon.png"
     },
     {
       "nom": "Electro-Titanide",
@@ -202,7 +203,7 @@
       ],
       "verre": "Verre old-fashioned",
       "garniture": "Écorce de citron",
-      "image": "Cocktails/Troups_images/Archer.png"
+      "image": "Cocktails/Troups_images/Electro_titanide.png"
     }
   ]
 }
