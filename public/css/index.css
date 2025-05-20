@@ -181,59 +181,6 @@ footer p {
     font-size: 1rem;
 }
 
-/* Animation pour les cartes */
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-.cocktail-card {
-    animation: float 3s ease-in-out infinite;
-}
-
-.cocktail-icon {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.discover-btn {
-    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
-    color: var(--secondary-color);
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.discover-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(138, 43, 226, 0.3);
-}
-
-.discover-btn i {
-    transition: transform 0.3s ease;
-}
-
-.discover-btn:hover i {
-    transform: translateX(5px);
-}
-
 /* Animation pour les icônes */
 @keyframes pulse {
     0% {
@@ -248,7 +195,9 @@ footer p {
 }
 
 .cocktail-icon {
-    animation: pulse 2s ease-in-out infinite;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
 /* Style pour les messages avec icônes */
@@ -304,4 +253,34 @@ footer p {
 }
 .fav-btn.discover-btn i {
     font-size: 1.2rem;       /* garder le cœur visible */
+}
+
+.discover-btn {
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    color: var(--secondary-color);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.discover-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(138, 43, 226, 0.3);
+}
+
+.discover-btn i {
+    transition: transform 0.3s ease;
+}
+
+.discover-btn:hover i {
+    transform: translateX(5px);
 } 
