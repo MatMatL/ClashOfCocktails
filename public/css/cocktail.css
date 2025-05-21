@@ -110,6 +110,18 @@
     right: 1rem;
     z-index: 10;
 }
+.fav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    transition: transform 0.2s ease;
+}
+.fav-btn:hover {
+    transform: scale(1.2);
+}
 
 @media (max-width: 768px) {
     .cocktail-details .cocktail-card {
